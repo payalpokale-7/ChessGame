@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class ChessGame {
+    private static final int BOARD_SIZE = 8;
+    private static final char EMPTY_SQUARE = '.';
+    
+    private char[][] board;
+
+    public ChessGame() {
+        this.board = new char[BOARD_SIZE][BOARD_SIZE];
+        initializeBoard();
+    }
+
+    private void initializeBoard() {
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                board[i][j] = EMPTY_SQUARE;
+            }
+        }
+    }
+
+    private void printBoard() {
+        System.out.println("  a b c d e f g h");
+        System.out.println(" -----------------");
+
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            System.out.print(BOARD_SIZE - i + "|");
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println("|" + (BOARD_SIZE - i));
+        }
+
+        System.out.println(" -----------------");
+        System.out.println("  a b c d e f g h");
+    }
+
+    private void placeInitialPieces() {
+        // TODO: Add initial piece placements for a standard chess game
+    }
+
+    public static void main(String[] args) {
+        ChessGame chessGame = new ChessGame();
+        chessGame.placeInitialPieces();
+        chessGame.printBoard();
+        
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Enter move (e.g., 'e2e4'): ");
+            String move = scanner.nextLine();
+
+            if (move.equalsIgnoreCase("exit")) {
+                System.out.println("Game over. Exiting...");
+                break;
+            }
+
+            // TODO: Implement move parsing and validation
+            // TODO: Implement piece movement logic
+
+            chessGame.printBoard();
+        }
+
+        scanner.close();
+    }
+}
